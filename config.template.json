@@ -7,23 +7,23 @@
     "guts"
   ],
   "priority_weights": [
+    1.25,
+    1.25,
     1,
-    1,
-    0,
     0,
     0
   ],
+  "sleep_time_multiplier": 1,
   "skip_training_energy": 25,
-  "never_rest_energy": 60,
+  "never_rest_energy": 75,
   "skip_infirmary_unless_missing_energy": 20,
-  "never_go_to_infirmary_energy": 20,
-  "minimum_mood": "GOOD",
+  "minimum_mood": "NORMAL",
   "priority_weight": "LIGHT",
   "minimum_mood_junior_year": "NORMAL",
   "maximum_failure": 15,
   "prioritize_g1_race": true,
   "cancel_consecutive_race": true,
-  "position_selection_enabled": true,
+  "position_selection_enabled": false,
   "enable_positions_by_race": false,
   "preferred_position": "pace",
   "positions_by_race": {
@@ -41,7 +41,7 @@
   },
   "skill": {
     "is_auto_buy_skill": true,
-    "skill_pts_check": 375,
+    "skill_pts_check": 400,
     "skill_list": [
       "Maverick \u25cb",
       "Lone Wolf",
@@ -52,5 +52,6 @@
       "Professor of Curvature",
       "Swinging Maestro"
     ]
-  }
+  },
+  "window_name": "LDPlayer"
 }

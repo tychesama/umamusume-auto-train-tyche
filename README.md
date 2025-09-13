@@ -24,6 +24,7 @@ Use responsibly and at your own discretion.
 - Stat target feature, if a stat already hits the target, skip training that one
 - Auto-purchase skill
 - Web Interface for easier configuration
+- Select running style position
 
 ## Getting Started
 
@@ -55,6 +56,11 @@ Make sure these conditions are met:
 - Your Uma must have already won the trophy for each race (the bot will skips the race)
 - Turn off all confirmation pop-ups in game settings
 - The game must be in the career lobby screen (the one with the Tazuna hint icon)
+
+### Bluestacks Settings
+
+1. Set custom display size of 800x1080 and DPI to 160.
+2. Make sure to set the window name in the config to match your emulator’s window title exactly. (case-sensitive)
 
 ### Start
 
@@ -88,7 +94,6 @@ Starting from the second year, it switches to the second logic. If there’s no 
 - OCR might misread failure chance (e.g., reads 33% as 3%) and proceeds with training anyway.
 - Automatically picks the top option during chain events. Be careful with Acupuncture event, it always picks the top option.
 - If you bring a friend support card (like Tazuna/Aoi Kiryuin) and do recreation, the bot can't decide whether to date with the friend support card or the Uma.
-- When `prioritize_g1_race` is set to `true`, the bot will always prioritize racing, even if your energy is low or you've already done 3 or more consecutive races.
 
 ### TODO
 

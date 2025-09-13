@@ -50,12 +50,14 @@ def most_support_card(results):
   priority_weight = PRIORITY_WEIGHTS_LIST[state.PRIORITY_WEIGHT]
 
   # this is the weight adder used for skewing results of training decisions PRIORITY_EFFECTS_LIST[get_stat_priority(x[0])] * PRIORITY_WEIGHTS_LIST[priority_weight]
+  # added hint 100%
   # Best training
   best_training = max(
     filtered_results.items(),
     key=lambda x: (
       x[1]["total_supports"] * (1 + state.PRIORITY_EFFECTS_LIST[get_stat_priority(x[0])] * priority_weight),
-      -get_stat_priority(x[0])  # priority decides when supports are equal
+      x[1].get("hints", 0),
+      -get_stat_priority(x[0])
     )
   )
 
@@ -77,7 +79,7 @@ def most_support_card(results):
       print("\n[INFO] Low value training (only 1 support). Choosing to rest.")
       return None
 
-  print(f"\nBest training: {best_key.upper()} with {best_data['total_supports']} support cards and {best_data['failure']}% fail chance")
+  print(f"\nBest training: {best_key.upper()} with {best_data['total_supports']} support cards, a {best_data['failure']}% fail chance, and {best_data['total_hints']}%")
   return best_key
 
 # Do rainbow training

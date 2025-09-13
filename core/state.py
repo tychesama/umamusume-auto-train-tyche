@@ -81,6 +81,8 @@ def check_support_card(threshold=0.8, target="none"):
 
   count_result = {}
 
+  HINT_ICON = "assets/icons/support_hint.png"
+
   SUPPORT_FRIEND_LEVELS = {
     "gray": [110,108,120],
     "blue": [42,192,255],
@@ -91,6 +93,7 @@ def check_support_card(threshold=0.8, target="none"):
 
   count_result["total_supports"] = 0
   count_result["total_friendship_levels"] = {}
+  count_result["total_hints"] = 0
 
   for friend_level, color in SUPPORT_FRIEND_LEVELS.items():
     count_result["total_friendship_levels"][friend_level] = 0
@@ -99,6 +102,7 @@ def check_support_card(threshold=0.8, target="none"):
     count_result[key] = {}
     count_result[key]["supports"] = 0
     count_result[key]["friendship_levels"]={}
+    count_result[key]["hints"] = 0
     for friend_level, color in SUPPORT_FRIEND_LEVELS.items():
       count_result[key]["friendship_levels"][friend_level] = 0
 
@@ -121,6 +125,15 @@ def check_support_card(threshold=0.8, target="none"):
       friend_level = closest_color(SUPPORT_FRIEND_LEVELS, friendship_level_color)
       count_result[key]["friendship_levels"][friend_level] = count_result[key]["friendship_levels"][friend_level] + 1
       count_result["total_friendship_levels"][friend_level] = count_result["total_friendship_levels"][friend_level] + 1
+
+      # check for hint near this support card
+      hint_matches = match_template(HINT_ICON, SUPPORT_CARD_ICON_REGION, threshold)
+      for hx, hy, hw, hh in hint_matches:
+        # if hint is close enough to the support card icon
+        if abs(hx - x) < 150 and abs(hy - y) < 150:
+          count_result[key]["hints"] += 1
+          count_result["total_hints"] += 1
+          break
 
   return count_result
 
